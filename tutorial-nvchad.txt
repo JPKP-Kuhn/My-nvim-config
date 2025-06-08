@@ -1,0 +1,12 @@
+Para atualizar - :Lazy sync
+
+Vídeo -> https://www.youtube.com/watch?v=yW3ovyQCwpw
+Para trocar tema - space + t + h
+para buscar um arquivo pesquisando - space + f + f
+para instalr uma linguagem - TSInstall {linguagem}
+tab e shift + tab para navegar através das tabs e space + x para fechar uma tabs
+:vsp ou :sp para criar mais janelas
+space + c + h para mostrar o cheatsheet o <leader> é o space
+
+:Lazy sync para atualizar os plugins
+:MasonUpdate pode ser usado para instalar plugins
