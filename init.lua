@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     if vim.fn.filereadable(template_path) == 1 then
       vim.cmd("0read " .. template_path)
       -- Posiciona o cursor na linha do main, após a abertura da chave
-      vim.api.nvim_win_set_cursor(0, {12, 2})
+      vim.api.nvim_win_set_cursor(0, {13, 2})
     else
       print("Template não encontrado: " .. template_path)
     end
