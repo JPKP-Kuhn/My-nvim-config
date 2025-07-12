@@ -52,5 +52,5 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 })
 
 -- relative numeration
-vim.opt.relativenumber = true
-vim.opt.number = true -- current number line
+-- vim.opt.relativenumber = true
+-- vim.opt.number = true -- current number line

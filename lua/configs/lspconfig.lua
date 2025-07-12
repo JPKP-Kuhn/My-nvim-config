@@ -50,9 +50,13 @@ lspconfig.clangd.setup {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 
+require('render-markdown').setup({
+    completions = { lsp = { enabled = true } },
+})
+
 -- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+ lspconfig.ts_ls.setup {
+   on_attach = nvlsp.on_attach,
+   on_init = nvlsp.on_init,
+   capabilities = nvlsp.capabilities,
+ }
