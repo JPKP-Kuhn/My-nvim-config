@@ -9,7 +9,10 @@ map("n", "9", "$", {noremap = true, silent = true})
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map({ "n", "i", "v" }, "<C-s>", function ()
+  vim.cmd('normal! gg=G')
+  vim.cmd('write')
+end, {desc = "Identa e salva o arquivo"})
 
 -- Somar 1 ao número sob o cursor
 map("n", "<C-=>", "<C-a>", { noremap = true, silent = true, desc = "Incrementar número (Ctrl + =)" })

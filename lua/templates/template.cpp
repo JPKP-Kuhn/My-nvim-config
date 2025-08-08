@@ -3,6 +3,7 @@ using namespace std;
 using ll = long long;
 using vll = vector<ll>;
 using vb = vector<bool>;
+using pl = pair<ll, ll>;
 using vpll = vector<pair<ll, ll>>;
 
 const ll MAXN = 1e5 + 10;// Range seguro para vetores e arrays
