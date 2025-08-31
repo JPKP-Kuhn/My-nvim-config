@@ -31,6 +31,10 @@ lspconfig.pyright.setup {
       },
     },
   },
+  root_dir = require('lspconfig.util').root_pattern(
+    "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", 
+    "Pipfile", "pyrightconfig.json", ".git"
+  ),
 }
 
 -- Configuração para clangd (C/C++)

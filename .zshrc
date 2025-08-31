@@ -3,14 +3,9 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 
-# For android sdk and flutter
-export ANDROID_HOME=$HOME/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export REPORTTIME=1
 
-# Set custom colors for C++ files
-export LS_COLORS="$LS_COLORS:*.cpp=03;31"
+autoload -Uz compinit && compinit
 
 ZSH_THEME="steeef"
 
@@ -19,34 +14,42 @@ plugins=(
     archlinux
     zsh-autosuggestions
     zsh-syntax-highlighting
+    web-search
+    common-aliases
+    copybuffer
+    copypath
 )
 
 source $ZSH/oh-my-zsh.sh
 
-#########Start-Comands##########
-
+source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Check archlinux plugin commands here
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
 
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-pokemon-colorscripts --no-title -s -r
+pokemon-colorscripts --no-title -s -r #without fastfetch
+#pokemon-colorscripts --no-title -s -r | fastfetch -c $HOME/.config/fastfetch/config-pokemon.jsonc --logo-type file-raw --logo-height 10 --logo-width 5 --logo -
 
-################################
 # fastfetch. Will be disabled if above colorscript was chosen to install
-# fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
+#fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
 
-# Set-up icons for files/folders in terminal
-alias ls='eza -a --icons'
-alias ll='eza -al --icons'
-alias lt='eza -a --tree --level=1 --icons'
+# Set-up icons for files/directories in terminal using lsd
+# base implementation with default options
+alias e='eza --git --icons --group --group-directories-first --sort=name'
+alias ls='eza --color=auto --icons'
+alias l='eza -l --color=auto --icons'
+alias la='eza -a --color=auto --icons'
+alias lla='eza -la --color=auto --icons'
+alias lt='eza --tree --color=auto --icons'
 
-# My own alias
-alias cl='clear'
-alias minecraft='java -jar /home/jpk/Games/TLauncher.jar'
-alias py='python3'
+# My custom alias
 alias q='exit'
+alias cl='clear'
 alias mv='mv -i'
+alias poweroff='systemctl poweroff'
+alias reboot='systemctl reboot'
+alias py='python3'
 
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
 source <(fzf --zsh)
@@ -56,23 +59,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(zoxide init zsh)"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/jpk/.lmstudio/bin"
+# Created by `pipx` on 2025-08-06 15:15:23
+export PATH="$PATH:/home/jpk/.local/bin"
 
-# pyenv Python Version
-. "$HOME/.local/bin/env"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
-# Path for my two bash script functions
-source $HOME/script/bash/marco_polo.sh
-
-# Time to execute a command 
+# function to tell the time taked by a program to be executed
 function preexec() {
   timer=$(date +%s%3N)
 }
@@ -91,8 +83,23 @@ function precmd() {
     elif ((s > 0)); then elapsed=${s}.$((ms / 10))s
     else elapsed=${ms}ms
     fi
-    export RPROMPT="%F{cyan}${elapsed} %{$reset_color%}"
+    export RPROMPT="%F{white}${elapsed} %{$reset_color%}"
     unset timer
   fi
 }
 
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# bun completions
+[ -s "/home/jpk/.bun/_bun" ] && source "/home/jpk/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

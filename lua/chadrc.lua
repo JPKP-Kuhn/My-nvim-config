@@ -5,13 +5,16 @@
 local options = {
 
   base46 = {
-    theme = "ayu_dark", -- default theme
+    theme = "github_dark", -- default theme
     hl_add = {},
-    hl_override = {},
+    hl_override = {
+      Comment = { fg = "#6A9955" , italic = true },
+      ["@comment"] = {  fg = "#6A9955" , italic = true },
+    },
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "ayu_dark", "one_light" },
+    theme_toggle = { "github_dark", "one_light" },
   },
 
   ui = {
@@ -60,6 +63,24 @@ local options = {
       "                      ",
       "  Powered By  eovim ",
       "                      ",
+      [[                                ]],
+      [[             ,,,,,,             ]],
+      [[         o#'9MMHb':'-,o,        ]],
+      [[      .oH":HH$' "' ' -*R&o,     ]],
+      [[     dMMM*""'`'      .oM"HM?.   ]],
+      [[   ,MMM'          "HLbd< ?&H\   ]],
+      [[  .:MH ."\          ` MM  MM&b  ]],
+      [[ . "*H    -        &MMMMMMMMMH: ]],
+      [[ .    dboo        MMMMMMMMMMMM. ]],
+      [[ .   dMMMMMMb      *MMMMMMMMMP. ]],
+      [[ .    MMMMMMMP        *MMMMMP . ]],
+      [[      `#MMMMM           MM6P ,  ]],
+      [[  '    `MMMP"           HM*`,   ]],
+      [[   '    :MM             .- ,    ]],
+      [[    '.   `#?..  .       ..'     ]],
+      [[       -.   .         .-        ]],
+      [[         ''-.oo,oo.-''          ]],
+      [[                                ]],
     },
 
     buttons = {
