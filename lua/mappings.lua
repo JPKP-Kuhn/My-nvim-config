@@ -23,3 +23,16 @@ map("n", "<C-->", "<C-x>", { noremap = true, silent = true, desc = "Decrementar 
 -- Selecionar todo o texto com Ctrl + a
 map("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Selecionar tudo" })
 map("v", "<C-a>", "<Esc>ggVG", { noremap = true, silent = true, desc = "Selecionar tudo" })
+
+-- Mover linha para cima no modo normal
+map("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Mover linha para cima" })
+
+-- Mover linha para baixo no modo normal
+map("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Mover linha para baixo" })
+
+-- Mover bloco selecionado para cima no modo visual
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Mover bloco para cima" })
+
+-- Mover bloco selecionado para baixo no modo visual
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Mover bloco para baixo" })
+

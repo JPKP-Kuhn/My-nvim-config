@@ -28,11 +28,12 @@ lspconfig.pyright.setup {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = "workspace",
+        extraPaths = { "." },
       },
     },
   },
   root_dir = require('lspconfig.util').root_pattern(
-    "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", 
+    "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt",
     "Pipfile", "pyrightconfig.json", ".git"
   ),
 }
