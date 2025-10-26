@@ -9,3 +9,4 @@ vim.g.lazyvim_python_lsp = "pyright"
 
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
+vim.opt_local.cursorline = true
