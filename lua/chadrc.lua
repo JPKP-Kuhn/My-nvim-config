@@ -5,7 +5,7 @@
 local options = {
 
   base46 = {
-    theme = "aylin", -- default theme
+    theme = "github_dark", -- default theme
     hl_add = {},
     hl_override = {
       Comment = { fg = "#6A9955" , italic = true },
@@ -14,7 +14,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "aylin", "one_light" },
+    theme_toggle = { "github_dark", "one_light" },
   },
 
   ui = {

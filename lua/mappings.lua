@@ -9,6 +9,11 @@ map("n", "9", "$", {noremap = true, silent = true})
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+map("n", "<leader>x", "<nop>", { desc = "Desabilitar a função de fechar buffer, conflito com uv" })
+map("n", "<leader>w", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "Fechar o buffer" })
+
 map({ "n", "i", "v" }, "<C-s>", function ()
   vim.cmd('normal! gg=G')
   vim.cmd('write')
